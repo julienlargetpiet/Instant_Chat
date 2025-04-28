@@ -1,6 +1,10 @@
 # Instant_Chat
 
+![logo](static/logo.jpg)
+
 This is a simple WebApplication for instant communication using websockets.
+
+A running example here https://msgxchange.xyz
 
 ## Philosophy
 
