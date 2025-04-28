@@ -24,7 +24,7 @@ type Clients struct {
 }
 var templates = template.Must(template.ParseFiles("templates/chat.html", "templates/chat_page.html", "templates/create_chat_room.html"))
 const port = "8080"
-var banned_usernames = [6]string{"Root", "ROOT", "root", "Admin", "ADMIN", "admin"}
+var banned_usernames = [6]string{"Root", "ROOT", "root", "Admin", "ADMIN", "admin", "templates", "main.go", "main", "static"}
 var only_usernames = [0]string{}
 var only_usrs = false
 var ref_ltr = [52]uint8{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
