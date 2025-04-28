@@ -821,6 +821,8 @@ func main () {
 
   mux.HandleFunc("/ws/", clients.HandleWSConnection)
 
+  mux.Handle("/static/", http.FileServer(http.Dir(".")))
+
   fmt.Println("Starting the server on port: ", port)
   err = http.ListenAndServe(":" + port, mux)
   if err != nil {
