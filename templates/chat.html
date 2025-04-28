@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" href="data:," type="image/x-icon">
+    <title>Chat</title>
+</head>
+<body>
+
+<style>
+.container {
+  height: 500px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 15px; 
+  margin-left:150px; 
+  margin-right: 20px; 
+  border-style: solid; 
+  border-width: thin; 
+  font-family:'Courier';
+  border-radius:30px;
+}
+</style>
+
+<a href = "../chat_page/{{.NextURL}}">Chat Page</a>
+<br><br><br>
+<center>
+
+<div class="container">
+
+<div id="IncomingMessage"></div>
+
+</div>
+
+<input type="text" id="message-input" placeholder="Type your message">
+
+<button id="send-button">Send</button>
+
+</center>
+
+<script>
+
+const NewMsg = document.getElementById("IncomingMessage");
+const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button');
+const socket = new WebSocket("ws://{{.ServerIP}}:{{.ServerPort}}/ws/{{.ChatRoom}}{{.NextURL}}");
+  
+socket.addEventListener("message", (event) => {
+  const message = event.data;
+  const messageElement = document.createElement("div")
+  messageElement.textContent = message;
+  NewMsg.appendChild(messageElement);
+});
+
+socket.addEventListener("error", (event) => {
+  console.error('WebSocket error:', event);
+});
+
+socket.addEventListener("close", () => {
+  console.log('WebSocket connection closed');
+});
+
+sendButton.addEventListener("click", () => {
+  const message = messageInput.value.trim();
+  if (message) {
+    socket.send(message);
+    messageInput.value = '';
+    messageElement.classList.add('sent-message');
+  }
+});
+
+</script>
+
+
+</body>
+
+

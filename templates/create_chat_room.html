@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create chat room</title>
+</head>
+<body>
+<center>
+<br><br><br>
+<b>Create Chat Room</b>
+<br><br><br>
+<a href="../create_chat/{{.NextURL}}">Reload</a><br>
+<a href = "../chat_page/{{.NextURL}}">Chat Page</a>
+<br><br><br>
+
+<form action="../new_chat/{{.NextURL}}" method="POST">
+
+<br>
+
+Room name:
+
+<br>
+
+<textarea name="room_name" rows="1" cols="18"></textarea>
+
+<br>
+
+Allowed users (separated with <code>,</code>:
+
+<br>
+
+<textarea name="users" rows="1" cols="18"></textarea>
+
+<br>
+
+Password:
+
+<br>
+
+<textarea name="password" rows="1" cols="18"></textarea>
+
+<input type="submit" value="Submit">
+
+</form>
+</center>
+</body>
+
+
